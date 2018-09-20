@@ -5,7 +5,7 @@ from tensorflow.contrib import rnn
 
 class HAND(object):
 
-    def __init__(self, vocab_size, num_classes, embedding_size=200, hidden_size=50):
+    def __init__(self, features, labels, vocab_size, num_classes, embedding_size=200, hidden_size=50):
         self.vocab_size = vocab_size
         self.num_classes = num_classes
         self.embedding_size = embedding_size
@@ -14,9 +14,8 @@ class HAND(object):
         with tf.name_scope('placeholder'):
             self.max_sentence_num = tf.placeholder(tf.int32, name='max_sentence_num')
             self.max_sentence_length = tf.placeholder(tf.int32, name='max_sentence_length')
-            self.batch_size = tf.placeholder(tf.int32, name='batch_size')
-            self.input_x = tf.placeholder(tf.int32, [None, None, None], name='input_x')
-            self.input_y = tf.placeholder(tf.float32, [None, num_classes], name='input_y')
+            self.input_x = features
+            self.input_y = labels
 
         word_embedded = self.word2vec()
         sent_vec = self.sent2vec(word_embedded)

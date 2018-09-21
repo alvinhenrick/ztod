@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import tensorflow as tf
 from tensorflow.contrib import layers
 from tensorflow.contrib import rnn
@@ -10,12 +12,10 @@ class HAND(object):
         self.num_classes = num_classes
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
-
-        with tf.name_scope('placeholder'):
-            self.max_sentence_num = tf.placeholder(tf.int32, name='max_sentence_num')
-            self.max_sentence_length = tf.placeholder(tf.int32, name='max_sentence_length')
-            self.input_x = features
-            self.input_y = labels
+        self.max_sentence_num = 30
+        self.max_sentence_length = 30
+        self.input_x = features
+        self.input_y = labels
 
         word_embedded = self.word2vec()
         sent_vec = self.sent2vec(word_embedded)

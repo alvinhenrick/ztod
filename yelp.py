@@ -60,10 +60,10 @@ def load_data(yelp_json_path, max_sent_in_doc, max_word_in_sent):
             for line_index, line in enumerate(f):
 
                 review = json.loads(line)
-                sents = sent_tokenizer.tokenize(review['text'])
+                sentences = sent_tokenizer.tokenize(review['text'])
                 doc = np.zeros([max_sent_in_doc, max_word_in_sent])
 
-                for i, sent in enumerate(sents):
+                for i, sent in enumerate(sentences):
                     if i < max_sent_in_doc:
                         word_to_index = np.zeros([max_word_in_sent], dtype=int)
                         for j, word in enumerate(word_tokenizer.tokenize(sent)):

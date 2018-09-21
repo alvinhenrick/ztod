@@ -7,13 +7,14 @@ from tensorflow.contrib import rnn
 
 class HAND(object):
 
-    def __init__(self, features, labels, vocab_size, num_classes, embedding_size=200, hidden_size=50):
+    def __init__(self, features, labels, vocab_size, num_classes, max_sentence_num=30, max_sentence_length=30,
+                 embedding_size=200, hidden_size=50):
         self.vocab_size = vocab_size
         self.num_classes = num_classes
         self.embedding_size = embedding_size
         self.hidden_size = hidden_size
-        self.max_sentence_num = 30
-        self.max_sentence_length = 30
+        self.max_sentence_num = max_sentence_num
+        self.max_sentence_length = max_sentence_length
         self.input_x = features
         self.input_y = labels
 

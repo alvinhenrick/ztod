@@ -105,3 +105,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+yelp_academic_dataset_review.json
+yelp_academic_dataset_review_data.pickle
+yelp_academic_dataset_review_vocab.pickle

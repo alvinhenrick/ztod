@@ -27,20 +27,11 @@ def train_and_evaluate(main_args):
     )  # Path to where checkpoints etc are stored
     tf.logging.info("...done constructing classifier")
 
-    # 500 epochs = 500 * 120 records [60000] = (500 * 120) / 32 batches = 1875 batches
-    # 4 epochs = 4 * 30 records = (4 * 30) / 32 batches = 3.75 batches
-
-    # Train our model, use the previously function my_input_fn
-    # Input to training is a file with training example
-    # Stop training after 8 iterations of train data (epochs)
-
     tf.logging.info("Before classifier.train")
     train_spec = tf.estimator.TrainSpec(
         input_fn=train_input_fn,
         max_steps=TRAIN_STEPS)
 
-    # classifier.train(
-    #     input_fn=lambda: my_input_fn(main_args.input_train_path, 500, 256))
     tf.logging.info("...done classifier.train")
 
     # Evaluate our model using the examples contained in FILE_TEST
@@ -53,8 +44,6 @@ def train_and_evaluate(main_args):
         throttle_secs=EVAL_INTERVAL,  # evaluate every N seconds
     )
 
-    # evaluate_result = classifier.evaluate(
-    #     input_fn=lambda: my_input_fn(main_args.input_test_path, 4))
     evaluate_result = tf.estimator.train_and_evaluate(estimator, train_spec, eval_spec)
 
     tf.logging.info("...done classifier.evaluate")

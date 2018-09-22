@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.contrib import layers
 from tensorflow.python.keras.preprocessing import sequence
 
-from model import HAND
+from model_adv import HAND
 from yelp import load_data
 
 sentence_size = 30

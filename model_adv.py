@@ -26,10 +26,9 @@ class HAND(object):
         self.out = out
 
     def word_embedding(self):
-        with tf.name_scope("embedding"):
-            embedding_mat = tf.Variable(tf.truncated_normal((self.vocab_size, self.embedding_size)))
-            word_embedded = tf.nn.embedding_lookup(embedding_mat, self.input_x)
-        return word_embedded
+        word_embed_layer = tf.contrib.layers.embed_sequence(self.input_x, vocab_size=self.vocab_size,
+                                                            embed_dim=self.embedding_size)
+        return word_embed_layer
 
     def sent2vec_with_attention(self, word_embedded):
         with tf.name_scope("sent2vec"):
@@ -46,7 +45,7 @@ class HAND(object):
             return doc_vec
 
     def classifier(self, doc_vec):
-        with tf.name_scope('document_classification'):
+        with tf.name_scope('classification'):
             out = layers.fully_connected(inputs=doc_vec, num_outputs=self.num_classes, activation_fn=None)
             return out
 

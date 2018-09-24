@@ -10,7 +10,7 @@ tf.logging.set_verbosity(tf.logging.DEBUG)
 
 
 def train_and_evaluate(main_args):
-    EVAL_INTERVAL = 300  # seconds
+    EVAL_INTERVAL = 100  # seconds
     TRAIN_STEPS = 10000
     EVAL_STEPS = None
 

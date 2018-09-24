@@ -11,7 +11,7 @@ tf.logging.set_verbosity(tf.logging.DEBUG)
 
 def train_and_evaluate(main_args):
     EVAL_INTERVAL = 300  # seconds
-    TRAIN_STEPS = 25000
+    TRAIN_STEPS = 1000
     EVAL_STEPS = None
 
     run_config = tf.estimator.RunConfig(save_checkpoints_secs=EVAL_INTERVAL,

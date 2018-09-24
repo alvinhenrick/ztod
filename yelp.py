@@ -24,8 +24,7 @@ def build_vocab(vocab_path, yelp_json_path):
                 words = word_tokenizer.tokenize(review['text'])
                 for word in words:
                     word_freq[word] += 1
-            print()
-            "load finished"
+            print("build vocab load finished")
         vocab = {}
         i = 1
         vocab['UNKNOWN_TOKEN'] = 0
@@ -38,8 +37,7 @@ def build_vocab(vocab_path, yelp_json_path):
             pickle.dump(vocab, g)
             print()
             len(vocab)  # 159654
-            print()
-            "vocab save finished"
+            print("build vocab save finished")
 
     return vocab
 

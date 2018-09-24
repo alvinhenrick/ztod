@@ -52,8 +52,8 @@ def han_model_fn(features, labels, mode):
                 labels,
                 vocab_size=159654,
                 num_classes=5,
-                embedding_size=200,
-                hidden_size=50)
+                embedding_size=400,
+                hidden_size=100)
 
     predictions = {'class_ids': tf.argmax(input=hand.out, axis=1),
                    'probabilities': tf.nn.softmax(hand.out),
